@@ -42,4 +42,42 @@ with open(model_path.absolute(), "wb") as model_f, open(X_path.absolute(), "wb")
   pickle.dump(X, x_f)
   pickle.dump(vectorizer, vector_f)
   pickle.dump(dataFrame, df_f)
-  ```
+```
+Under else block:
+```
+with open(model_path.absolute(), "rb") as model_f, open(X_path.absolute(), "rb") as x_f, open(vectorizer_path.absolute(), "rb") as vector_f, open(dataframe_path.absolute(), "rb") as df_f:
+  model = pickle.load(model_f)
+  X = pickle.load(x_f)
+  vectorizer = pickle.load(vector_f)
+  dataFrame = pickle.load(df_f)
+```
+### Step 3:
+Once the dataframe is ready, during the development, I have splitted the data into train and test and checked the accuracy of the model. Thats where I got the following accuracy - 
+![image](https://user-images.githubusercontent.com/102677891/234177510-332533b2-b01f-44f5-ad73-5889e75a8ea3.png)
+Upon the development stage is done, I went with production, that's where I have used the complete data to fit the model instead of test data.<br>
+*Development stage code*
+```
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train = X_train.apply(lambda x: ' '.join(x))
+X_test = X_test.apply(lambda x: ' '.join(x))
+------------------------------------------------
+vectorizer = TfidfVectorizer()
+X_train = vectorizer.fit_transform(X_train)
+X_test = vectorizer.transform(X_test)
+------------------------------------------------
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print('Accuracy:', accuracy)
+```
+*Production stage code* - The considered code
+```
+X = X.apply(lambda x: ' '.join(x))
+------------------------------------
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(X)
+model = LogisticRegression(random_state = 42, max_iter = 1000)
+model.fit(X, y)
+```
+
+
