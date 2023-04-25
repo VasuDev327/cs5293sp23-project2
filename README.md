@@ -35,3 +35,11 @@ X_path = Path.cwd() / "X_tra.pkl"
 vectorizer_path = Path.cwd() / "vectorizer.pkl"
 dataframe_path = Path.cwd() / "dataframe.pkl"
 ```
+Under if block:
+```
+with open(model_path.absolute(), "wb") as model_f, open(X_path.absolute(), "wb") as x_f, open(vectorizer_path.absolute(), "wb") as vector_f, open(dataframe_path.absolute(), "wb") as df_f:
+  pickle.dump(model, model_f)
+  pickle.dump(X, x_f)
+  pickle.dump(vectorizer, vector_f)
+  pickle.dump(dataFrame, df_f)
+  ```
