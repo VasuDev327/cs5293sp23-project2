@@ -19,6 +19,8 @@ from pathlib import Path
 
 For this project, I utilized *logistic regression* by importing relevant libraries using *scikit-learn*. The imported libraries include **train_test_split**, **LogisticRegression**, **accuracy_score**, **TfidfVectorizer**, and **cosine_similarity**.
 
+I have also tried using **Support Vector Machines**, where I have got the same accuracy. So I went on with **Logistic Regression**
+
 ### Step 1:
 In the main method, I have included two parameters - N and ingredient, which are the command line arguments. These inputs are expected from the user using the following command - 
 ```
