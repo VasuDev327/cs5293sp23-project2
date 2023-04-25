@@ -1,7 +1,7 @@
 ## cs5293sp23-project2
 ### Project2 - Text Analytics - Cuisine Prediction
 ### Vasu Deva Sai Nadha Reddy Janapala
-
+### project2.py file explaination
 The following are the libraries used in this project:
 ```
 import json
@@ -79,5 +79,4 @@ X = vectorizer.fit_transform(X)
 model = LogisticRegression(random_state = 42, max_iter = 1000)
 model.fit(X, y)
 ```
-
 
