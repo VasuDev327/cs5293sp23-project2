@@ -79,7 +79,6 @@ X = vectorizer.fit_transform(X)
 model = LogisticRegression(random_state = 42, max_iter = 1000)
 model.fit(X, y)
 ```
-
 ### Step 4:
 Predicting the cuisine based on the input ingredients - *input_ingredients* along with that we find the score of the predicted cuisine. <br>
 Post that we find the *cosine similarity*. Which is used to find the nearest cuisines. <br>
@@ -100,9 +99,9 @@ json_str = json.dumps(output_dict, indent=2)
 print(json_str)
 return output_dict
 ```
-
 ### Step 5 - Output <br>
 ![image](https://user-images.githubusercontent.com/102677891/234186819-2c839cd5-2a95-40f7-9f23-5e7bf9826506.png) <br>
+Under the docs folder, I have saved a screen recorded video, to show the successful run of the code.
 
 ## test_project2.py explaination
 In the pytest, I have Arranged, Act and Asserted the data as follows
